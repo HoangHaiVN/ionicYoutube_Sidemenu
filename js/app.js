@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
+var app = angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -22,7 +22,8 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+  $ionicConfigProvider.views.maxCache(0)
   $stateProvider
 
     .state('app', {
@@ -46,16 +47,28 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
       views: {
         'menuContent': {
           templateUrl: 'templates/browse.html',
-          controller: 'nowPlayingCtrl'
+          controller: 'PlaylistsCtrl'
 
         }
       }
     })
+
+
     .state('app.playlists', {
       url: '/playlists',
       views: {
         'menuContent': {
           templateUrl: 'templates/playlists.html',
+          controller: 'PlaylistsCtrl'
+        }
+      }
+    })
+
+    .state('app.phim1', {
+      url: '/phim1',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/phim1.html',
           controller: 'PlaylistsCtrl'
         }
       }

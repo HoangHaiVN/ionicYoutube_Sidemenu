@@ -1,4 +1,4 @@
-<div ng-app="starter" ng-controller="ListaCtrl">
+	<div ng-app="starter" ng-controller="ListaCtrl">
 	  <ion-view title="Video Playlist">
 	   <div class="bar bar-header bar-light">
 		  <button class="button button-icon icon ion-home" ui-sref="home"></button>
@@ -15,7 +15,7 @@
             <input type="text" placeholder="Published..." ng-model="query.published">
             </label>
 		   <ion-list>
-		   <ion-item class="item-thumbnail-left item-text-wrap" ng-repeat="item in items | filter:{title: query.title, publishedAt: query.published}"  class="item-thumbnail-left" ng-click="playvideo(item.snippet.resourceId.videoId,item.snippet.title)">
+		   <ion-item class="item-thumbnail-left item-text-wrap" ng-repeat="item in items | filter:{title: query.title, publishedAt: query.published}"  class="item-thumbnail-left" ng-click="playvideo(item.snippet.resourceId.videoId,item.snippet.title)" ui-sref="app.browse">
 				<img ng-src="{{item.snippet.thumbnails.high.url}}"/>
 				<h2>{{item.snippet.title}}</h2>
 				<p>Publikuar më: {{item.snippet.publishedAt | date }} </p>

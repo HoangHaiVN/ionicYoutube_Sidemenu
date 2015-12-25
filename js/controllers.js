@@ -1,6 +1,5 @@
 angular.module('starter.controllers', [])
 
-
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
   // With the new view caching in Ionic, Controllers are only called
@@ -65,6 +64,30 @@ angular.module('starter.controllers', [])
   })
 })
 
+
+
+.controller('phim1',function($scope,$http,$state){
+  $http.get('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLbLLUY02QH6ga_iZ8dzbD3pYXMjFYya2b&maxResults=40&key=AIzaSyDhDZjburmzpaoH39Uj4dnU6X_GRLbCVW0').then(function(resp) {
+    console.log('Success', resp);
+  $scope.items = resp.data.items;
+           
+    $scope.playvideo = function(id,title){
+        $state.go('now-playing',{id:id,title:title});
+       //SocialShare function
+        
+    }
+   // console.log("VideoID: " + id);
+    
+        // For JSON responses, resp.data contains the result
+  }, function(err) {
+    console.error('ERR', err);
+    // err.status will contain the status code
+        //PLueTNPnrNvSHjlZcJb4-Yt6LXUwa53M_p - Sami Yusuf
+        //PL97C2D4AAC980FDD7 Ilahi
+  })
+})
+
+
 .controller('nowPlayingCtrl',function ($scope, $http, $stateParams){
     $scope.videoId = $stateParams.id;
     $scope.videoTitle = $stateParams.title;
@@ -79,8 +102,6 @@ angular.module('starter.controllers', [])
     //$cordovaSocialSharing.shareViaFacebook('Duke shikuar: ' , title, null, 'http://www.youtube.com/watch?v=' + id);
    }
 })
-
-
 
 .controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [
