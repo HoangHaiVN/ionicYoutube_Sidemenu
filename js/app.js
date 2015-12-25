@@ -64,16 +64,6 @@ var app = angular.module('starter', ['ionic', 'starter.controllers','ngCordova']
       }
     })
 
-    .state('app.phim1', {
-      url: '/phim1',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/phim1.html',
-          controller: 'PlaylistsCtrl'
-        }
-      }
-    })
-
   .state('app.single', {
     url: '/playlists/:playlistId',
     views: {
