@@ -1,0 +1,27 @@
+<div ng-app="starter" ng-controller="ListaCtrl">
+	  <ion-view title="Video Playlist">
+	   <div class="bar bar-header bar-light">
+		  <button class="button button-icon icon ion-home" ui-sref="home"></button>
+		  <div class="h1 title">Lista e emisioneve </div>
+		  
+		</div>
+		<ion-content padding="true" class="has-header" >
+			   <label class="item item-input">
+				<i class="icon ion-search placeholder-icon"></i>
+				<input type="text" placeholder="Title..." ng-model="query.title"><br>
+             </label>
+            <label class="item item-input">
+				<i class="icon ion-search placeholder-icon"></i>
+            <input type="text" placeholder="Published..." ng-model="query.published">
+            </label>
+		   <ion-list>
+		   <ion-item class="item-thumbnail-left item-text-wrap" ng-repeat="item in items | filter:{title: query.title, publishedAt: query.published}"  class="item-thumbnail-left" ng-click="playvideo(item.snippet.resourceId.videoId,item.snippet.title)">
+				<img ng-src="{{item.snippet.thumbnails.high.url}}"/>
+				<h2>{{item.snippet.title}}</h2>
+				<p>Publikuar më: {{item.snippet.publishedAt | date }} </p>
+                
+		   </ion-item>
+		   </ion-list>
+		  
+		</ion-content>
+	  </ion-view>
